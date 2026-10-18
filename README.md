@@ -1,63 +1,74 @@
-<div align="center">
+# Kiran Reddy
 
-# Hi, I'm Kiran Reddy
-
-### Full-stack software engineer · Backend systems · Reliability
-
-I build user-facing applications and the systems that keep them reliable.
+### Full-stack engineer building real-time applications and reliable backend systems.
 
 [Portfolio](https://portfolio-kiranreddy.vercel.app/) · [LinkedIn](http://www.linkedin.com/in/bodhireddykiranreddy) · [Email](mailto:kiranreddy321ms@gmail.com)
 
-Boston, MA · M.S. Information Systems, Northeastern University
+I work across **React / TypeScript interfaces**, **Java / Spring Boot and Node.js services**, and the databases and infrastructure behind them. I enjoy the parts where those layers meet: getting live data onto a dashboard, finding out why an API slowed down, or making a retry safe.
 
-</div>
+Currently building user-facing workflows and backend services at **Saayam For All**. Previously, I worked on real-time analytics at **Swapt** and distributed services at **Tata Consultancy Services**.
+
+Based in **Boston, MA** · **M.S. Information Systems, Northeastern University**
 
 ---
 
-## About me
-
-My work spans React and TypeScript interfaces, Java/Spring Boot and Node.js services, real-time data pipelines, and cloud deployments. I enjoy following a problem across the stack: from a slow dashboard to its API calls, database queries, and infrastructure metrics.
-
-At **Saayam For All**, I build user-facing workflows and backend services. Previously, I worked on **Swapt**, a B2B post-purchase SaaS platform, and supported distributed services at **Tata Consultancy Services**. My work has included reducing analytics p95 latency from **800 ms to 480 ms**, delivering dashboard updates in **under 3 seconds**, and improving deployment workflows.
-
-## Projects worth exploring
+## Featured work
 
 ### [Incident Lab](https://github.com/Kiran0517/incident-lab)
-**Build it. Break it. Understand it. Prove the fix.**
+An order platform I deliberately break to understand how distributed systems fail.
 
-A three-service order platform for investigating distributed-system failures through load testing, fault injection, and observability.
+`Java 21` `Spring Boot` `PostgreSQL` `Docker` `OpenTelemetry` `k6` `Toxiproxy`
 
-- **Build:** Java 21, Spring Boot, PostgreSQL, Maven, and Docker Compose, with concurrency-safe stock reservations and idempotent retries.
-- **Observe:** OpenTelemetry traces, Prometheus metrics, Jaeger, Grafana, and structured logs.
-- **Measure:** Approximately **1,200 orders/second** at **p95 below 50 ms** in k6 load tests with 20 virtual users and **3M+ historical records**.
-- **Investigate:** A dropped index cut throughput **41×** while requests still returned without errors. Database analysis and connection-pool metrics exposed the bottleneck; rollback restored performance.
-- **Fix:** Made uncertain payment outcomes explicit and built reconciliation. Repeating the payment-timeout experiment reduced silently stuck orders from **119 to 0**; reconciliation resolved **483 ambiguous orders** across experiments.
+I built three services for orders, inventory, and payments, instrumented them with traces, metrics, and structured logs, then tested bad deployments, network latency, and service crashes.
 
-The lesson I keep coming back to: **a timeout doesn't prove an operation failed.**
+- Sustained approximately **1,200 orders/sec at p95 below 50 ms** in k6 load tests with 20 virtual users and **3M+ historical records**.
+- Traced a **41× throughput drop** to a missing database index and verified recovery after rollback.
+- Found **119 orders stuck after successful payments**. Added an explicit unknown-payment state and reconciliation, then repeated the experiment: **119 stuck orders → 0**.
+
+**What made it interesting:** the most useful bugs weren't the ones I planted. The experiments exposed port exhaustion, an observability outage, and a timeout-handling bug introduced by an earlier fix.
 
 ### [Cosmo Plan](https://github.com/Kiran0517/My-Personal-Projects-/tree/main/CosmoPlan-DMDD-main)
-**Multi-tenant application design, access control, and database performance.**
+A full-stack space exploration management application with tenant-aware services and role-based access.
 
-A space exploration management project built with React, Java, Spring Boot, PostgreSQL, and Redis.
+`React` `Java` `Spring Boot` `PostgreSQL` `Redis` `Jest` `Cypress`
 
-- Designed multi-tenant services with indexed queries completing in **under 100 ms across 500K+ records**.
-- Implemented role-based access control with OAuth 2.0 and JWT.
-- Automated application testing with Jest and Cypress through GitHub Actions.
+- Designed multi-tenant backend services with OAuth 2.0 / JWT access control.
+- Used PostgreSQL indexing and Redis caching to achieve **sub-100 ms indexed queries across 500K+ records**.
+- Added automated application tests and a GitHub Actions pipeline.
 
-## Tools I work with
+### NestKnowledge
+A learning platform built with React, Node.js, MongoDB, and AWS.
 
-- **Languages & interfaces:** Java, TypeScript, JavaScript, Python, Go, SQL, React, Next.js.
-- **Services & data:** Spring Boot, Node.js, REST, GraphQL, WebSockets, PostgreSQL, MySQL, MongoDB, Redis, Kafka.
+`React` `Node.js` `MongoDB` `Redis` `AWS` `GitHub Actions`
+
+- Scaled to **10,000+ users** with Redis-cached reads and EC2 autoscaling.
+- Kept peak-traffic **p95 time-to-first byte below 500 ms**.
+- Integrated Cypress end-to-end tests into CI/CD to catch regressions before deployment.
+
+---
+
+## My stack
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-20232A?style=flat-square&logo=nextdotjs&logoColor=white)
+![Java](https://img.shields.io/badge/Java-E76F00?style=flat-square)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+
+- **Frontend:** React, Next.js, TypeScript, JavaScript, React Native.
+- **Backend & data:** Java, Spring Boot, Node.js, Python, Go, REST, GraphQL, WebSockets, PostgreSQL, MongoDB, Redis, Kafka.
 - **Cloud & delivery:** AWS, Docker, Kubernetes, GitHub Actions, Jenkins, Maven.
 - **Testing & observability:** Jest, Cypress, k6, Toxiproxy, OpenTelemetry, Prometheus, Jaeger, Grafana, Datadog.
 
-## How I approach engineering
+## How I work
 
-- **Follow the evidence.** Use traces, logs, metrics, and database records to test explanations for failures.
-- **Close the loop.** Repeat the conditions that exposed a bug to verify the fix.
-- **Listen, then iterate.** Translate stakeholder requirements and customer feedback into concrete application improvements.
-- **Review what AI produces.** I use Claude Code, Cursor, and GitHub Copilot to draft tests and debug failures, and review the generated code.
+**Start with the workflow.** At Swapt, customer feedback came through our product lead. I used it to guide frontend and backend improvements, including dashboards with reporting delays under three seconds.
+
+**Measure the whole path.** A fast interface depends on rendering, APIs, queries, and infrastructure. I like following that path rather than guessing where the bottleneck is.
+
+**Verify the fix.** A passing health check isn't enough. I repeat the load or failure conditions that exposed the problem. I also use Claude Code, Cursor, and GitHub Copilot for test drafting and debugging, and review the generated code.
 
 ---
 
-Interested in full-stack development, backend performance, or reliability engineering? [Let's connect.](http://www.linkedin.com/in/bodhireddykiranreddy)
+If you're working on full-stack products, real-time systems, or reliability problems, [let's connect](http://www.linkedin.com/in/bodhireddykiranreddy).
